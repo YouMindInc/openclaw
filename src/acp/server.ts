@@ -71,6 +71,7 @@ export async function serveAcpGateway(opts: AcpServerOptions = {}): Promise<void
     clientDisplayName: "ACP",
     clientVersion: "acp",
     mode: GATEWAY_CLIENT_MODES.CLI,
+    caps: ["tool-events"],
     onEvent: (evt) => {
       void agent?.handleGatewayEvent(evt);
     },
