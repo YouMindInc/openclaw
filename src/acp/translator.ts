@@ -520,6 +520,10 @@ export class AcpGatewayAgent implements Agent {
     return { configOptions, modes };
   }
 
+  async listSessions(params: ListSessionsRequest): Promise<ListSessionsResponse> {
+    return this.unstable_listSessions(params);
+  }
+
   async unstable_listSessions(params: ListSessionsRequest): Promise<ListSessionsResponse> {
     const limit = readNumber(params._meta, ["limit"]) ?? 100;
     const result = await this.gateway.request<SessionsListResult>("sessions.list", { limit });
